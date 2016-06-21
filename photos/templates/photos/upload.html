@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 text-center instructions">
+            <h4>Upload photos</h4>
+        </div>
+        <div class="col-md-8 text-center instructions">
+            <p>(If photos are large, upload just one at a time.)</p>
+        </div>
+    </div>
+
+    <br>
+    <div class="row form-row">
+        <div class="form-space col-md-4"></div>
+        <div class="col-md-4 text-left form-space">
+            <form action="" id="post-form" class="post-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group" id="form-core">
+                    {{ form.as_p }}            
+
+                    <input class="btn btn-warning" type="submit" name="Upload">
+
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 form-space"></div>
+    </div>
+</div>
+   
+    
