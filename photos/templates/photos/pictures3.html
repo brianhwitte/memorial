@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pictures</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--
+    <link rel="stylesheet" href="{% static 'photos/css/bootstrap.min.css' %}">
+    -->
+    <link rel="stylesheet" href="{% static 'photos/Gallery2212/css/blueimp-gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'photos/Gallery2212/css/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'photos/bootstrap-image-gallery/Bootstrap-Image-Gallery-342/css/bootstrap-image-gallery.min.css' %}">
+    <link rel="stylesheet" href="{% static 'photos/css/photo_gallery.css' %}">
+</head>
+<body>
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="links" class="links">
+    {% for object in object_list %}
+        <a href="{{object.url}}" title="{{object.title}}" data-description="Description {{object.pk}}" data-gallery="#blueimp">
+            <img src="{{object.thumb}}" >
+        </a>
+    {% endfor %}
+</div>
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <p class="description"></p>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<!--
+<script src="{% static 'photos/Gallery2212/js/blueimp-gallery.min.js' %}"></script>
+-->
+
+<script src="{% static 'photos/bootstrap-image-gallery/Bootstrap-Image-Gallery-342/js/bootstrap-image-gallery.js' %}"></script>
+
+<!--
+<script src="{% static 'photos/js/bootstrap-image-gallery.js' %}"></script>
+
+<script src="{% static 'photos/js/photos.js' %}"></script>
+-->
+</footer>
+</html>

@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pictures</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{% static 'photos/BIG342/css/demo.css' %}">
+    <link rel="stylesheet" href="{% static 'photos/BIG342/css/bootstrap-image-gallery.min.css' %}">
+    <link rel="stylesheet" href="{% static 'photos/css/pic5.css' %}">
+</head>
+<body>
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="links" class="links">
+    {% for object in object_list %}
+        <!--
+        <a href="{{object.url}}" title="{{object.title}}" data-description="Description {{object.pk}}" id="{{object.pk}}" data-gallery>
+        -->
+        <img src="{{object.thumb}}" id="{{object.pk}}" data-link="{{object.url}}" title="{{object.title}}">
+        </a>
+    {% endfor %}
+</div>
+<!--
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <p class="description"></p>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close"></a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+<!--
+    <div class="modal fade" id="gallerymodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+<div class="modal fade" id="gallerymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center" id="modal-title"></h4>
+            </div>
+            
+            <div id="photocontainer" class='text-center'>
+                
+            </div>
+            <div class="modal-body">
+                <div class="description" id="description">
+                </div>
+                <button type="button" id="add_description" class="add_description">Add description</button>                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="divider"></div>
+            <div class="left-side">
+                <button type="button" class="btn btn-success btn-simple" id="prev"></button>
+            </div>
+            <div class="right-side">
+                <button type="button" class="btn btn-default btn-simple" id="next">Next</button>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+<footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{% static 'photos/js/bootstrap.js' %}"></script>
+<script src="{% static 'photos/js/pic5.js' %}"></script>
+
+
+</footer>
+</html>

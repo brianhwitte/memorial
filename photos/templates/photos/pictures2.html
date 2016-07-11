@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pictures</title>
+    
+    <link rel="stylesheet" href="{% static 'photos/css/photo_gallery.css' %}">
+</head>
+<body>
+<h1>Memorial</h1>
+
+<div class="galleria">
+    {% for object in object_list %}
+        <a href="{{object.url}}">
+        <img src="{{object.thumb}}" data-title="{{object.title}}" data-description="test comment {{object.pk}}">
+    </a>
+    {% endfor %}
+</div>
+</body>
+<footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{% static 'photos/js/galleria-1.4.2.min.js' %}"></script>
+<script>
+    Galleria.loadTheme("{% static 'photos/themes/classic/galleria.classic.min.js' %}");
+    Galleria.run('.galleria');
+</script>
+</footer>
+</html>

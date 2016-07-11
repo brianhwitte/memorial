@@ -1,23 +1,12 @@
-.modal-story {
-    text-align: center;
-}
-
-.galleria {
-    width: 700px;
-    height: 400px;
-    background: #000d;
-}
-
 .blueimp-gallery > .description {
-    position: absolute;
-    top: 30px;
-    left: 15px;
-    color: #fff;
-    display: none;
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  color: #fff;
+  display: none;
 }
-
 .blueimp-gallery-controls > .description {
-    display: block;
+  display: block;
 }
 
 .blueimp-gallery > .slides > .slide > .text-content {

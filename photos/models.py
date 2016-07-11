@@ -5,6 +5,13 @@ from django.utils import timezone
 
 # Create your models here.
 
+
+# class PictureManager(models.Manager):
+#     def get_queryset(self):
+#         for item in self
+#         comments = Comment.objects.filter(for_picture=self.pk)
+
+
 class Timestamp(models.Model):
     created_time=models.DateTimeField(editable=False, default=timezone.now)
     modified=models.DateTimeField(default=timezone.now)
@@ -18,6 +25,9 @@ class Picture(Timestamp):
     url=models.URLField()
     thumb=models.URLField()
 
+    # objects=models.Manager()
+    # with_comments=PictureManager()
+
     def __str__(self):
         
         if self.title:
@@ -29,6 +39,7 @@ class Picture(Timestamp):
 class Comment(Timestamp):
     for_picture=models.ForeignKey(Picture)
     comment=models.CharField(max_length=500, blank=True)
+    author=models.CharField(max_length=100, blank=True)
 
     def __str__(self):
 
@@ -42,3 +53,4 @@ class Story(Timestamp):
     def __str__(self):
 
         return self.story_title[:15]
+

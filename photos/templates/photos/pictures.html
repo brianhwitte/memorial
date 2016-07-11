@@ -5,17 +5,19 @@
     <title>Pictures</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+
     <link rel="stylesheet" href="{% static 'photos/css/bootstrap-image-gallery.min.css' %}">
     <link rel="stylesheet" href="{% static 'photos/css/photo_gallery.css' %}">
 </head>
 <body>
 <h1>Memorial</h1>
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery">
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
     <!-- The container for the modal slides -->
     <div class="slides"></div>
     <!-- Controls for the borderless lightbox -->
     <h3 class="title"></h3>
+    <p class="description"></p>
     <a class="prev">‹</a>
     <a class="next">›</a>
     <a class="close">×</a>
@@ -31,6 +33,7 @@
                 </div>
                 <div class="modal-body next"></div>
                 <div class="modal-footer">
+                    <h6 class="modal-story"></h6>
                     <button type="button" class="btn btn-default pull-left prev">
                         <i class="glyphicon glyphicon-chevron-left"></i>
                         Previous
@@ -44,10 +47,59 @@
         </div>
     </div>
 </div>
+<div id="links">
+    {% for object in object_list %}
+        <a href="{{object.url}}" title="{{object.title}}" alt="test comment {{object.pk}}" data-description="Descr: {{object.pk}}" data-gallery>
+        <img src="{{object.thumb}}" >
+    </a>
+    {% endfor %}
+</div>
 </body>
 <footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<script src="{% static 'photos/js/bootstrap-image-gallery.min.js' %}"></script>
+<script src="{% static 'photos/js/blueimp-gallery.min.js' %}"></script>
+<!--<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>-->
+
+
+<!--
+<script src="{% static 'photos/js/blueimp-gallery.js' %}"></script>
+<script src="{% static 'photos/js/blueimp-gallery-fullscreen.js' %}"></script>
+<script src="{% static 'photos/js/blueimp-gallery-indicator.js' %}"></script>
+-->
+<!--
+<script src="js/blueimp-gallery-video.js"></script>
+<script src="js/blueimp-gallery-youtube.js"></script>
+<script src="js/blueimp-gallery-vimeo.js"></script>
+-->
+<!--
+<script src="{% static 'photos/js/jquery.blueimp-gallery.js' %}"></script>
+<script src="{% static 'photos/js/bootstrap-image-gallery.js' %}"></script>
+-->
+<!--
+<script>
+    document.getElementById('links').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+    };
+</script>
+
+<script>
+    blueimp.Gallery(document.getElementById('links'),
+    {
+        onslide: function (index, slide) {
+            var text = this.list[index].getAttribute('data-description'),
+                node = this.container.find('.description');
+            node.empty();
+            if (text) {
+                node[0].appendChild(document.createTextNode(text));
+            }
+        }
+    });
+</script>
+-->
 </footer>
 </html>
