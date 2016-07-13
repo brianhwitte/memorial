@@ -9,8 +9,12 @@ class UploadForm(forms.Form):
     attachments = MultiFileField(min_num=1, max_num=100, max_file_size=2048*2048*5)
     
 
-class DescriptionForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ['comment', 'author']
+        fields = ['for_picture', 'comment', 'author']
+
+        widgets = {
+            'for_picture': forms.widgets.HiddenInput
+        }
