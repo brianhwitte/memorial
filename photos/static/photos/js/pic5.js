@@ -1,10 +1,14 @@
 
-function getDescr(pic_id) {
-    var html_descr = $.ajax
-}
-
-
-$(document).ready(function(){
+$(document).ready(function()
+    {
+        var photo_ids = [];
+        
+        photo_ids = $.map($('img'), function(n, i) 
+                {
+                    return n.id;
+                });
+            
+        console.log("photo_ids", photo_ids);
     
     $('img').on('click', function(){
         var title = this.getAttribute('title');
@@ -36,13 +40,14 @@ $(document).ready(function(){
                 type: 'POST',
                 url: postURL, 
                 data: sendData, 
-                dataType: 'json', 
-                async: false,
+                dataType: 'html', 
+
                 success: function(info)
                     {
                     console.log('ajaxdata', info);
                     $('#description').html(info);
                     $('#add_description').show();
+                    $('#add_comment').html('<br>');
                     }
                 });
             

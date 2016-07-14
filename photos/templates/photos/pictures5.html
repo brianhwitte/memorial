@@ -11,13 +11,9 @@
     <link rel="stylesheet" href="{% static 'photos/css/pic5.css' %}">
 </head>
 <body>
-
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
 <div id="links" class="links">
     {% for object in object_list %}
-        <!--
-        <a href="{{object.url}}" title="{{object.title}}" data-description="Description {{object.pk}}" id="{{object.pk}}" data-gallery>
-        -->
+        
         <img src="{{object.thumb}}" id="{{object.pk}}" data-link="{{object.url}}" title="{{object.title}}">
         </a>
     {% endfor %}
@@ -68,6 +64,17 @@
             <div id="photocontainer" class='text-center'>
                 
             </div>
+            <div>
+            <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn pull-right btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+            </div>
+            <br>
             <div class="modal-body">
                 <div class="description" id="description">
                 </div>
@@ -77,12 +84,14 @@
             </div>
         </div>
         <div class="modal-footer">
-            <div class="divider"></div>
-            <div class="left-side">
-                <button type="button" class="btn btn-success btn-simple" id="prev"></button>
-            </div>
-            <div class="right-side">
-                <button type="button" class="btn btn-default btn-simple" id="next">Next</button>
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
         </div>
       </div>
     </div>

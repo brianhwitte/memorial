@@ -38,14 +38,13 @@ class NewComment(CreateView):
     def get_success_url(self):
         pk = self.kwargs['photo_id']
         print "success_pk", pk
+        
         return reverse_lazy('description', kwargs={"pk": pk})
 
     def get(self, request, *args, **kwargs):
         self.object = None
-        # print "args", args
-        # print "kwargs", kwargs
+        
         return super(BaseCreateView, self).get(request, *args, **kwargs)
-        # return self.render_to_response(self.get_context_data(**kwargs))
 
     def get_context_data(self, **kwargs):
         context = super(NewComment, self).get_context_data(**kwargs)
